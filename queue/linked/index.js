@@ -27,20 +27,51 @@ class LinkedList {
     }
 
     prepend(val){
-        // initialization the node
+        // initialization the node data akan masuk pertama
         const node = new Node(val)
         if(this.isEmpty()){
+            // data head akan keupdate dari node
             this.head =node
+            console.log("node kalo kosong=>",node)
         }
         else {
+            // setiap penambhan node, node.next akan diambil dari data head yg sudah disimpan seblmnya
             node.next = this.head
-            this.head =node
+            // data diupdate kembali kedalam head agar ketika ada penambhan data
+            // maka data akan bisa dipake kedalam node selanjutnya
+            this.head = node
+            console.log("ada data", this.head)
         }
         this.size++
+    }
+    print(){
+        if(this.isEmpty()){
+            console.log("print is empty")
+        }else {
+            // awal mula curr ada pada head
+            let curr = this.head
+            let listValues = ''
+            while(curr){
+                listValues += ` ${curr.value}`
+                // setiap next node akan update current position ke next agar while tidak selalu true
+                curr = curr.next
+            }
+            console.log("data yg ada=>",listValues)
+        }
     }
 }
 
 const linked = new LinkedList()
 console.log("list Empty",linked.isEmpty())
 console.log("list size",linked.getSize())
+linked.print()
 linked.prepend(10)
+linked.print()
+linked.prepend(20)
+linked.print()
+linked.prepend(30)
+linked.print()
+
+
+
+
