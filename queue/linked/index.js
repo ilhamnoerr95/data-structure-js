@@ -46,6 +46,7 @@ class LinkedList {
         this.size++
     }
 
+    // O(n) linear 
     append(val){
         // initialization the node data akan masuk pertama
         const node = new Node(val)
@@ -56,15 +57,19 @@ class LinkedList {
             console.log("node kalo kosong=>",node)
         }
         else {
+            // prev data dapat dari prtma kali head saat data size 0
             let prev = this.head
 
             // apabila next tidak null akan terus ngeloop
             while(prev.next){
                 // console.log("ga kosong",prev.next)
+                // Node { value: 20, next: null}
                 prev = prev.next
             }
             
-            
+            // Node {val: 10, next: null} atau kalo ditambah menjadi
+            // Node {val: 10, next: Node {value:20, next: null}} atau kalo ditambah
+            // update prev.next dengan data node terbaru
             prev.next = node
             console.log("diluar while",prev)
             
