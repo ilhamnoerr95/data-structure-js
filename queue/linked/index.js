@@ -26,6 +26,7 @@ class LinkedList {
             return this.size
     }
 
+    //  O(1) CONSTANT
     prepend(val){
         // initialization the node data akan masuk pertama
         const node = new Node(val)
@@ -42,6 +43,34 @@ class LinkedList {
             this.head = node
             console.log("ada data", this.head)
         }
+        this.size++
+    }
+
+    append(val){
+        // initialization the node data akan masuk pertama
+        const node = new Node(val)
+        // apabila size masih kosong maka head akan di update oleh node pertama kalinya
+        if(this.isEmpty()){
+            // data head akan keupdate dari node
+            this.head =node
+            console.log("node kalo kosong=>",node)
+        }
+        else {
+            let prev = this.head
+
+            // apabila next tidak null akan terus ngeloop
+            while(prev.next){
+                // console.log("ga kosong",prev.next)
+                prev = prev.next
+            }
+            
+            
+            prev.next = node
+            console.log("diluar while",prev)
+            
+
+        }
+        
         this.size++
     }
     print(){
@@ -65,11 +94,11 @@ const linked = new LinkedList()
 console.log("list Empty",linked.isEmpty())
 console.log("list size",linked.getSize())
 linked.print()
-linked.prepend(10)
+linked.append(10)
 linked.print()
-linked.prepend(20)
+linked.append(20)
 linked.print()
-linked.prepend(30)
+linked.append(30)
 linked.print()
 
 
