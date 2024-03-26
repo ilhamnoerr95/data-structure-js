@@ -41,7 +41,7 @@ class LinkedList {
             // data diupdate kembali kedalam head agar ketika ada penambhan data
             // maka data akan bisa dipake kedalam node selanjutnya
             this.head = node
-            console.log("ada data", this.head)
+            console.log("ada data prepend=>", this.head)
         }
         this.size++
     }
@@ -78,6 +78,33 @@ class LinkedList {
         
         this.size++
     }
+
+    // insert
+    // menambhkan nilai sesuai indexinya
+    insert(value,index){
+        // kembali ke fungsinya
+        if(index < 0 || index > this.size) {
+            return
+        }
+
+        if(index === 0){
+            // menggunakan funsgi prepend apabila indexi 0
+            this.prepend(value)
+        } else {
+            const node = new Node(value)
+            let prev = this.head
+            // looping agar inserting sesuai dengan extepasinya
+            for(let i = 0; i < index - 1; i++){
+                prev = prev.next
+            }
+            console.log("insertion",prev)
+            node.next = prev.next
+            prev.next= node
+
+            this.size++
+        }
+    }
+
     print(){
         if(this.isEmpty()){
             console.log("print is empty")
@@ -98,13 +125,17 @@ class LinkedList {
 const linked = new LinkedList()
 console.log("list Empty",linked.isEmpty())
 console.log("list size",linked.getSize())
-linked.print()
-linked.append(10)
-linked.print()
-linked.append(20)
-linked.print()
-linked.append(30)
-linked.print()
+linked.insert(10,0)
+linked.insert(500,1)
+
+
+// linked.print()
+// linked.append(10)
+// linked.print()
+// linked.append(20)
+// linked.print()
+// linked.append(30)
+// linked.print()
 
 
 
