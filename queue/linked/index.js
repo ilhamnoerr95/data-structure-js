@@ -1,3 +1,5 @@
+import chalk from 'chalk';
+
 class Node {
     constructor(value){
         this.value = value
@@ -87,20 +89,27 @@ class LinkedList {
             return
         }
 
+        // insert data apabila index = 0 
         if(index === 0){
-            // menggunakan funsgi prepend apabila indexi 0
+            // menggunakan funsgi prepend apabila indexi === 0
             this.prepend(value)
         } else {
             const node = new Node(value)
+            console.log(chalk.red("data insert baru masuk=>"), node)
+
             let prev = this.head
             // looping agar inserting sesuai dengan extepasinya
             for(let i = 0; i < index - 1; i++){
                 prev = prev.next
             }
-            console.log("insertion",prev)
+            console.log(chalk.blue("head insertion: "),prev)
             node.next = prev.next
-            prev.next= node
+            console.log(chalk.greenBright("node insert after: "),node)
 
+            prev.next= node
+            console.log("prev result after: ",prev)
+
+            
             this.size++
         }
     }
@@ -126,7 +135,12 @@ const linked = new LinkedList()
 console.log("list Empty",linked.isEmpty())
 console.log("list size",linked.getSize())
 linked.insert(10,0)
+linked.insert(20,0)
+// linked.insert(30,0)
 linked.insert(500,1)
+// linked.insert(300,1)
+
+
 
 
 // linked.print()

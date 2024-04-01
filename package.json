@@ -11,5 +11,9 @@
 		"data-structure"
 	],
 	"author": "ilhamnrachman",
-	"license": "ISC"
+	"type": "module",
+	"license": "ISC",
+	"dependencies": {
+		"chalk": "^5.3.0"
+	}
 }
