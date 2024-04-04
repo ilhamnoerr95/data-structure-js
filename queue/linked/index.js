@@ -114,14 +114,44 @@ class LinkedList {
         }
     }
 
+    // remove data
+    removeFrom(index){
+        if(index< 0 || index >= this.size){
+            return null
+        }
+        // nampung node
+        let removeNode
+        // apabila index 0, maka isi var remove node dng headnya
+        // lanjut dengan update this.head dengan this.head.next
+        if(index === 0){
+            removeNode = this.head
+            this.head = this.head.next
+        } else {
+            // untuk menampung nilai sebelumnya
+            let prev = this.head;
+            for(let i=0; i< index-1; i++){
+                prev = prev.next
+            }
+            removeNode = prev.next
+            console.log("masuk:", removeNode)
+            prev.next = removeNode.next
+            console.log("prev.next remove:", prev)
+
+        }
+        this.size --
+        return removeNode.value
+    }
+
     print(){
         if(this.isEmpty()){
             console.log("print is empty")
         }else {
             // awal mula curr ada pada head
             let curr = this.head
+            // nampung nilai value
             let listValues = ''
             while(curr){
+                // update nilai valuenya
                 listValues += ` ${curr.value}`
                 // setiap next node akan update current position ke next agar while tidak selalu true
                 curr = curr.next
@@ -138,7 +168,11 @@ linked.insert(10,0)
 linked.insert(20,0)
 // linked.insert(30,0)
 linked.insert(500,1)
+linked.print()
 // linked.insert(300,1)
+linked.removeFrom(1)
+linked.print()
+
 
 
 
