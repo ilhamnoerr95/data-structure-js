@@ -34,7 +34,7 @@ class LinkedList {
         const node = new Node(val)
         if(this.isEmpty()){
             // data head akan keupdate dari node
-            this.head =node
+            this.head = node
             console.log("node kalo kosong=>",node)
         }
         else {
@@ -45,6 +45,8 @@ class LinkedList {
             this.head = node
             console.log("ada data prepend=>", this.head)
         }
+        
+        // setiap prepend selalu tambah sizenya
         this.size++
     }
 
@@ -93,21 +95,25 @@ class LinkedList {
         if(index === 0){
             // menggunakan funsgi prepend apabila indexi === 0
             this.prepend(value)
-        } else {
+        }
+        // apabila index > 0
+        else {
             const node = new Node(value)
-            console.log(chalk.red("data insert baru masuk=>"), node)
+            console.log(chalk.bgRed("first data node=>"), node)
 
             let prev = this.head
             // looping agar inserting sesuai dengan extepasinya
+        //    looping jalan apbila index lebih besar dari 0
             for(let i = 0; i < index - 1; i++){
                 prev = prev.next
             }
-            console.log(chalk.blue("head insertion: "),prev)
-            node.next = prev.next
-            console.log(chalk.greenBright("node insert after: "),node)
 
+            console.log(chalk.bgBlue("this.Data head: "),prev)
+            node.next = prev.next
+            console.log(chalk.bgMagenta("node insert after: "),node)
+            console.log(chalk.bgCyan("prev.next==>"), prev)
             prev.next= node
-            console.log("prev result after: ",prev)
+            console.log(chalk.bgYellowBright("the result: "),prev)
 
             
             this.size++
@@ -148,6 +154,7 @@ class LinkedList {
         }else {
             // awal mula curr ada pada head
             let curr = this.head
+            // console.log(curr)
             // nampung nilai value
             let listValues = ''
             while(curr){
@@ -162,15 +169,17 @@ class LinkedList {
 }
 
 const linked = new LinkedList()
-console.log("list Empty",linked.isEmpty())
-console.log("list size",linked.getSize())
+// console.log("list Empty",linked.isEmpty())
 linked.insert(10,0)
 linked.insert(20,0)
-// linked.insert(30,0)
-linked.insert(500,1)
-linked.print()
-// linked.insert(300,1)
-linked.removeFrom(1)
+linked.insert(30,1)
+linked.insert(40,2)
+// console.log("list size",linked.getSize())
+
+// linked.insert(500,1)
+// linked.print()
+// // linked.insert(300,1)
+// linked.removeFrom(1)
 linked.print()
 
 
