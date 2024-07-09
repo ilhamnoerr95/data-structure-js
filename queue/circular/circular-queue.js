@@ -1,3 +1,6 @@
+import chalk from 'chalk';
+
+
 // que akan berhenti sesuai dengan sizenya = circular-queue
 class CirculaQueue {
     // parameter capacity mewakili maks size pada circular queue
@@ -26,7 +29,9 @@ class CirculaQueue {
         // untuk unqueu item kita harus makesure si queu tidak full
         if(!this.isFull()) {
             
+            // membuat rear pertama kali dr -1 menjadi index 0
             this.rear = (this.rear + 1) % this.capacity
+            console.log(this.rear)
             // nambahin item
             this.items[this.rear] = element
             // nambah current valuenya 
@@ -43,7 +48,7 @@ class CirculaQueue {
     dequeue(){
         if(!this.isEmpty()){
            const item = this.items[this.front]
-        //    console.log("front", this.front)
+           console.log("delete from front", this.front)
            this.items[this.front] = null
            this.front = (this.front + 1 ) % this.capacity
 
@@ -59,7 +64,7 @@ class CirculaQueue {
     }
     peek(){
         if(!this.isEmpty()){
-            console.log("peek",this.items[this.front])
+            console.log("peek=>",this.front,this.items[this.front])
         }
         return null
     }
@@ -69,10 +74,10 @@ class CirculaQueue {
     print(){
         if(this.isEmpty()){
 
-            console.log('the queue is empty')
+            console.log(chalk.bgRedBright('the queue is empty'))
         }
          else {
-            console.log(this.items)
+            console.log(chalk.bgGreen("print This Item =>"), this.items)
          }
     }
 }
@@ -83,13 +88,15 @@ Cq.enqueue(20)
 Cq.enqueue(30)
 Cq.enqueue(40)
 Cq.enqueue(50)
+// Cq.enqueue(70)
 
 
+
 console.log("remove",Cq.dequeue())
 console.log("remove",Cq.dequeue())
-console.log("remove",Cq.dequeue())
-console.log("remove",Cq.dequeue())
-console.log("remove",Cq.dequeue())
+// console.log("remove",Cq.dequeue())
+// console.log("remove",Cq.dequeue())
+// console.log("remove",Cq.dequeue())
 
 
 // Cq.peek()
@@ -97,5 +104,5 @@ console.log("isFull queue =>",Cq.isFull())
 console.log("isEmpty=>",Cq.isEmpty())
 Cq.peek()
 Cq.print()
-
-console.log(3 % 5)
+Cq.size()
+console.log( 4 % 5)
