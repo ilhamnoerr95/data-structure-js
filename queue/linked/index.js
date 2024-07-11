@@ -145,7 +145,7 @@ class LinkedList {
 
         }
         this.size --
-        return removeNode.value
+        return removeNode.value 
     }
 
     print(){
