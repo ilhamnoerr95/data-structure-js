@@ -63,7 +63,6 @@ class LinkedList {
         else {
             // prev data dapat dari prtma kali head saat data size 0
             let prev = this.head
-
             // apabila next tidak null akan terus ngeloop
             while(prev.next){
                 // console.log("ga kosong",prev.next)
@@ -135,17 +134,54 @@ class LinkedList {
         } else {
             // untuk menampung nilai sebelumnya
             let prev = this.head;
+            console.log(chalk.green("ini remove from:"), prev)
             for(let i=0; i< index-1; i++){
                 prev = prev.next
             }
+            console.log(chalk.bgBlueBright("remove from prev:"), prev)
             removeNode = prev.next
-            console.log("masuk:", removeNode)
+            console.log(chalk.bgMagenta("removeNode:"), removeNode)
+            // pre.next diupdate jadi nilai removenode.nextnya 
+            // apakah itu null atau ada nilainya
             prev.next = removeNode.next
             console.log("prev.next remove:", prev)
 
         }
         this.size --
         return removeNode.value
+    }
+
+    // remove based on value 
+    removeValue(value){
+        if(this.isEmpty()) {
+            return null
+        }
+        // remove value nodes pertama
+        if(this.head.value === value){
+            this.head = this.head.next
+            this.size --
+            return value
+        }
+         else {
+            let prev = this.head
+            // apbila prev.next ada && prev.next.value tidak sm dngn value
+            while(prev.next && prev.next.value !== value){
+                prev = prev.next
+            }
+
+            // parameter untuk index terkahir
+            if(prev.next){
+                const removeNode = prev.next
+                console.log("remove",removeNode)
+                console.log("prev",prev)
+                prev.next = removeNode.next
+                console.log(prev)
+                this.size--
+                return value
+            }
+            return null
+         }
+
     }
 
     print(){
@@ -163,7 +199,7 @@ class LinkedList {
                 // setiap next node akan update current position ke next agar while tidak selalu true
                 curr = curr.next
             }
-            console.log("data yg ada=>",listValues)
+            console.log(chalk.bgCyan("data yg ada=>"),listValues)
         }
     }
 }
@@ -179,7 +215,8 @@ linked.insert(40,2)
 // linked.insert(500,1)
 // linked.print()
 // // linked.insert(300,1)
-// linked.removeFrom(1)
+// linked.removeFrom(2)
+console.log(chalk.bgBlue("remove from valiue"),linked.removeValue(10))
 linked.print()
 
 
