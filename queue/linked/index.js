@@ -184,6 +184,21 @@ class LinkedList {
 
     }
 
+    // search berdasarkan index
+    search(value){
+        if(this.isEmpty()) return - 1
+
+        else {
+            let index = 0
+            let curr = this.head
+            while(curr){
+                if(curr.value === value) return index
+                curr = curr.next
+                index++
+            }
+            return -1
+        }
+    }
     print(){
         if(this.isEmpty()){
             console.log("print is empty")
@@ -230,6 +245,7 @@ linked.print()
 // linked.print()
 // linked.append(30)
 // linked.print()
+console.log(linked.search(40))
 
 
 
